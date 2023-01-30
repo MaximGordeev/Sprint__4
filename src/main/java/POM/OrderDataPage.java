@@ -11,14 +11,21 @@ import java.time.Duration;
 import java.util.List;
 
 public class OrderDataPage {
-
+    //локатор поля ввода даты
     private final static By ORDER_DATA_DELIVERY = By.xpath("//input[@placeholder='* Когда привезти самокат']");
+    //локатор выпадающего списка с временем аренды самоката
     private final static By RENTAL_PERIOD = By.xpath("//div[@class= 'Dropdown-placeholder']");
+    //локатор элементов выпадающего списка с временем аренды
     private final static By RENTAL_PERIOD_OPTION = By.xpath("//div[@class = 'Dropdown-option']");
+    //локатор инпута с цветом самоката
     private final static By SCOOTER_COLOUR = By.xpath("//input[@id = 'grey']");
+    //локатор поля ввода коментария для курьера
     private final static By COMMENT_FOR_COURIER = By.xpath("//input[@placeholder = 'Комментарий для курьера']");
+    //локатор кнопки Заказать
     private final static By ORDER_BUTTON = By.xpath("//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM']");
+    //локатор кнопки Да подтверждения заказа
     private final static By CONMFIRM_ORDER = By.xpath("//div[@class='Order_Buttons__1xGrp']/button[text()='Да']");
+    //локатор сообщения о создании заказа
     private final static By CHECK_ORDER = By.xpath("//div[@class='Order_ModalHeader__3FDaJ']");
     private final WebDriver driver;
     public OrderDataPage(WebDriver driver) {
