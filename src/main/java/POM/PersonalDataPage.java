@@ -20,6 +20,7 @@ public class PersonalDataPage {
     private final static By NEXT_BUTTON = By.xpath("//button[text() = 'Далее']");
 
     private final WebDriver driver;
+
     public PersonalDataPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -27,23 +28,29 @@ public class PersonalDataPage {
     public void enterName(String name) {
         driver.findElement(NAME).sendKeys(name);
     }
+
     public void enterSurname(String surname) {
         driver.findElement(SURNAME).sendKeys(surname);
     }
+
     public void enterAddress(String address) {
         driver.findElement(ADDRESS).sendKeys(address);
     }
+
     public void enterMetroStation(String metroStationPattern) {
         driver.findElement(METRO).sendKeys(metroStationPattern);
         driver.findElement(FIRST_SEARCH_ELEMENT).click();
     }
+
     public void enterTelephone(String telephoneNumber) {
         driver.findElement(TELEPHONE).sendKeys(telephoneNumber);
     }
-    public void clickOnNextButton(){
+
+    public void clickOnNextButton() {
         driver.findElement(NEXT_BUTTON).click();
     }
-    public void enterPersonalData(String name, String surname, String address, String metroStationPattern, String telephoneNumber){
+
+    public void enterPersonalData(String name, String surname, String address, String metroStationPattern, String telephoneNumber) {
         enterName(name);
         enterSurname(surname);
         enterAddress(address);
@@ -51,6 +58,4 @@ public class PersonalDataPage {
         enterTelephone(telephoneNumber);
         clickOnNextButton();
     }
-
-
 }

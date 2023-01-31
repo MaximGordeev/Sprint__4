@@ -20,16 +20,11 @@ public class TestScooterOrder {
     private final String address;
     private final String metroStationPattern;
     private final String telephoneNumber;
-
     private final String deliveryDate;
     private final int rentDays;
     private final String courierComment;
-
-
     private WebDriver driver;
 
-    //кнопка использования Cookie
-    private final static By COOKIE_BUTTON = By.xpath("//button[@id='rcc-confirm-button']");
     //url сайта
     private final static String SITE_URL = "https://qa-scooter.praktikum-services.ru/";
 
@@ -44,11 +39,12 @@ public class TestScooterOrder {
         this.rentDays = rentDays;
         this.courierComment = courierComment;
     }
-    @Parameterized.Parameters
+
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} {2} {3} {4} {5} {6} {7} {8}")
     public static Object[][] getOrderData() {
         return new Object[][]{
                 {true, "Макс", "Максимов", "переулок Максимов", "Сокольник", "12345678901", "23.03.2023", 2, "давай быстрее"},
-                {false, "Гордей","Гордеев","улица Гордеевская","Комсомольс","10987654321","04.04.2023",4,"приедишь поговорим)"},
+                {false, "Гордей", "Гордеев", "улица Гордеевская", "Комсомольс", "10987654321", "04.04.2023", 4, "приедишь поговорим)"},
         };
     }
 
@@ -59,27 +55,21 @@ public class TestScooterOrder {
         //System.setProperty("webdriver.gecko.driver","C:\\WebDrivers\\firefox\\geckodriver.exe");
         //driver = new FirefoxDriver();
         driver.get(SITE_URL);
-        driver.findElement(COOKIE_BUTTON).click();
+        MainPage objMainPage = new MainPage(driver);
+        objMainPage.clickOnCookieButton();
     }
 
-
-
-
-
     @Test
-    public void testScooterOrderWithHeaderButton(){
+    public void testScooterOrderWithHeaderButton() {
         MainPage objMainPage = new MainPage(driver);
-        if(headerButton){
-            objMainPage.clickOnOrderButton(objMainPage.getHeaderOrderButton());}
-        else objMainPage.clickOnOrderButton(objMainPage.getMiddleOrderButton());
-
+        if (headerButton) {
+            objMainPage.clickOnOrderButton(objMainPage.getHeaderOrderButton());
+        } else objMainPage.clickOnOrderButton(objMainPage.getMiddleOrderButton());
         PersonalDataPage objPersonalDataPage = new PersonalDataPage(driver);
-        objPersonalDataPage.enterPersonalData(name, surname,address, metroStationPattern, telephoneNumber);
-
+        objPersonalDataPage.enterPersonalData(name, surname, address, metroStationPattern, telephoneNumber);
         OrderDataPage objOrderDataPage = new OrderDataPage(driver);
         objOrderDataPage.enterOrderData(deliveryDate, rentDays, courierComment);
         Assert.assertTrue(objOrderDataPage.isOrderConmfirmed());
-
     }
 
     @After

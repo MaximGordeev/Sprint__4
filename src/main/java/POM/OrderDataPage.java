@@ -28,6 +28,7 @@ public class OrderDataPage {
     //локатор сообщения о создании заказа
     private final static By CHECK_ORDER = By.xpath("//div[@class='Order_ModalHeader__3FDaJ']");
     private final WebDriver driver;
+
     public OrderDataPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -36,6 +37,7 @@ public class OrderDataPage {
         driver.findElement(ORDER_DATA_DELIVERY).sendKeys(deliveryDate);
         driver.findElement(ORDER_DATA_DELIVERY).sendKeys(Keys.RETURN);
     }
+
     public void enterRentalPeriod(int rentDays) {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(driver.findElement(RENTAL_PERIOD)));
@@ -45,26 +47,32 @@ public class OrderDataPage {
                 .until(ExpectedConditions.visibilityOfAllElements(orderDuration));
         orderDuration.get(rentDays).click();
     }
+
     public void enterScooterColour() {
         driver.findElement(SCOOTER_COLOUR).click();
     }
+
     public void enterCourierComment(String courierComment) {
         driver.findElement(COMMENT_FOR_COURIER).sendKeys(courierComment);
     }
+
     public void clickOrderButton() {
         driver.findElement(ORDER_BUTTON).click();
     }
+
     public void clickConfirmButton() {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOf(driver.findElement(CONMFIRM_ORDER)));
         driver.findElement(CONMFIRM_ORDER).click();
     }
+
     public boolean isOrderConmfirmed() {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOf(driver.findElement(CHECK_ORDER)));
         boolean actualResult = driver.findElement(CHECK_ORDER).isDisplayed();
         return actualResult;
     }
+
     public void enterOrderData(String deliveryDate, int rentDays, String courierComment) {
         enterDeliveryDate(deliveryDate);
         enterRentalPeriod(rentDays);
