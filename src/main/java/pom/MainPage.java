@@ -1,4 +1,4 @@
-package POM;
+package pom;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;

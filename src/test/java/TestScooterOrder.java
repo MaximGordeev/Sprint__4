@@ -1,16 +1,14 @@
-import POM.MainPage;
-import POM.OrderDataPage;
-import POM.PersonalDataPage;
+import pom.MainPage;
+import pom.OrderDataPage;
+import pom.PersonalDataPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Parameterized.class)
 public class TestScooterOrder {

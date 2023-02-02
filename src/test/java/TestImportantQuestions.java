@@ -1,4 +1,4 @@
-import POM.MainPage;
+import pom.MainPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
